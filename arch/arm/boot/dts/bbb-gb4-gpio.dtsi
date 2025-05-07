@@ -1,0 +1,101 @@
+&am33xx_pinmux {
+	gb4_pins: gb4_pins {
+		pinctrl-single,pins = <
+			AM33XX_IOPAD(0x9ac, PIN_OUTPUT | MUX_MODE7)      /* P9.25, io boot     */
+			AM33XX_IOPAD(0x9a4, PIN_OUTPUT | MUX_MODE7)      /* P9.27, io reset    */
+			AM33XX_IOPAD(0x878, PIN_OUTPUT | MUX_MODE7)      /* P9.12, UART 4 DE   */
+			AM33XX_IOPAD(0x890, PIN_OUTPUT | MUX_MODE7)      /* P8.7,  LED 1       */
+			AM33XX_IOPAD(0x848, PIN_OUTPUT | MUX_MODE7)      /* P9.14, LED 2 red   */
+			AM33XX_IOPAD(0x84c, PIN_OUTPUT | MUX_MODE7)      /* P9.16, LED 2 green */
+			AM33XX_IOPAD(0x820, PIN_OUTPUT | MUX_MODE7)      /* P8.19, LED 2 blue  */
+			AM33XX_IOPAD(0x894, PIN_OUTPUT | MUX_MODE7)      /* P8.8,  LED 3       */
+			AM33XX_IOPAD(0x89c, PIN_OUTPUT | MUX_MODE7)      /* P8.9,  LED 4       */
+			AM33XX_IOPAD(0x898, PIN_OUTPUT | MUX_MODE7)      /* P8.10, LED 5       */
+			AM33XX_IOPAD(0x834, PIN_OUTPUT | MUX_MODE7)      /* P8.11, LED 6       */
+			AM33XX_IOPAD(0x830, PIN_OUTPUT | MUX_MODE7)      /* P8.12, LED 7       */
+			AM33XX_IOPAD(0x828, PIN_OUTPUT | MUX_MODE7)      /* P8.14, LED 8       */
+			AM33XX_IOPAD(0x83c, PIN_OUTPUT | MUX_MODE7)      /* P8.15, LED 9       */
+			AM33XX_IOPAD(0x838, PIN_OUTPUT | MUX_MODE7)      /* P8.16, LED 10      */
+		>;
+	};
+};
+
+/ {
+	gb4_gpio {
+		pinctrl-names = "default";
+		pinctrl-0 = <&gb4_pins>;
+
+		compatible = "gpio-leds";
+
+		io_boot {
+			label = "gb4:io:boot";
+			gpios = <&gpio3 21 GPIO_ACTIVE_HIGH>;
+			default-state = "off";
+		};
+		io_reset {
+			label = "gb4:io:reset";
+			gpios = <&gpio3 19 GPIO_ACTIVE_LOW>;
+			default-state = "off";
+		};
+		led1 {
+			label = "gb4:led:1";
+			gpios = <&gpio2 2 GPIO_ACTIVE_LOW>;
+			default-state = "off";
+		};
+		led2r {
+			label = "gb4:led:2:red";
+			gpios = <&gpio1 18 GPIO_ACTIVE_LOW>;
+			default-state = "off";
+		};
+		led2g {
+			label = "gb4:led:2:green";
+			gpios = <&gpio1 19 GPIO_ACTIVE_LOW>;
+			default-state = "off";
+		};
+		led2b {
+			label = "gb4:led:2:blue";
+			gpios = <&gpio0 22 GPIO_ACTIVE_LOW>;
+			default-state = "on";
+		};
+		led3 {
+			label = "gb4:led:3";
+			gpios = <&gpio2 3 GPIO_ACTIVE_LOW>;
+			default-state = "off";
+		};
+		led4 {
+			label = "gb4:led:4";
+			gpios = <&gpio2 5 GPIO_ACTIVE_LOW>;
+			default-state = "off";
+		};
+		led5 {
+			label = "gb4:led:5";
+			gpios = <&gpio2 4 GPIO_ACTIVE_LOW>;
+			default-state = "off";
+		};
+		led6 {
+			label = "gb4:led:6";
+			gpios = <&gpio1 13 GPIO_ACTIVE_LOW>;
+			default-state = "off";
+		};
+		led7 {
+			label = "gb4:led:7";
+			gpios = <&gpio1 12 GPIO_ACTIVE_LOW>;
+			default-state = "off";
+		};
+		led8 {
+			label = "gb4:led:8";
+			gpios = <&gpio0 26 GPIO_ACTIVE_LOW>;
+			default-state = "off";
+		};
+		led9 {
+			label = "gb4:led:9";
+			gpios = <&gpio1 15 GPIO_ACTIVE_LOW>;
+			default-state = "off";
+		};
+		led10 {
+			label = "gb4:led:10";
+			gpios = <&gpio1 14 GPIO_ACTIVE_LOW>;
+			default-state = "off";
+		};
+	};
+};
